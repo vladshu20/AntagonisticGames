@@ -39,16 +39,11 @@
       <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
               class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
                 <table class="table table-bordered table-responsive-md table-striped text-center">
-<!--                    <thead>-->
-<!--                    <tr>-->
-
-<!--                    </tr>-->
-<!--                    </thead>-->
                     <tbody>
-                    <tr th:each="i: ${#numbers.sequence(1,4)}">
+                    <tr th:each="i: ${#numbers.sequence(1,3)}">
 <!--                        <th:block th:each="i: ${#numbers.sequence(1,4)}">-->
-                        <td class="pt-3-half" contenteditable="true" th:each="j: ${#numbers.sequence(1,4)}">
-                            <input type="hidden" name="${'data'+i+j}">
+                        <td class="pt-3-half" contenteditable="true" th:each="j: ${#numbers.sequence(1,3)}">
+                            <input type="text" class="form-control" th:name="${'data'+i+j}" th:id="${'data'+i+j}" value="0">
                         </td>
                     </tr>
                     </tbody>
