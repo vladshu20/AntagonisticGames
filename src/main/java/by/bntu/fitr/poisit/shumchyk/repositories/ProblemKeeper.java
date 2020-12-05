@@ -10,7 +10,12 @@ import java.util.List;
 public class ProblemKeeper {
     public List <Problem> problemList = new ArrayList<>();
 
-    public void keepProblem(Problem problem){
+    public void addProblem(Integer numOfRows, Integer numOfCols){
+        Problem problem = new Problem();
+        problem.setNumOfRows(numOfRows);
+        problem.setNumOfCols(numOfCols);
+
+
         problemList.add(problem);
     }
 
@@ -22,4 +27,8 @@ public class ProblemKeeper {
         return  ar;
     }
 
+    public void setProblemData(Integer[][] dataToSet){
+        Problem pr = problemList.get(problemList.size() - 1);
+        pr.setData(dataToSet);
+    }
 }

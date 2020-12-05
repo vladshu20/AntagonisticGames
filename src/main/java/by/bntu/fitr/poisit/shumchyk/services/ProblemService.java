@@ -18,11 +18,7 @@ public class ProblemService {
         if (numOfRows != null && numOfCols != null) {
             System.out.println("preset data correct" + numOfCols.toString() + " " + numOfRows.toString()
                     + " " + tmp);
-
-            Problem problem = new Problem();
-            problem.setNumOfRows(numOfRows);
-            problem.setNumOfCols(numOfCols);
-            problemKeeper.keepProblem(problem);
+            problemKeeper.addProblem(numOfRows, numOfCols);
 
         }
 
@@ -35,22 +31,40 @@ public class ProblemService {
     }
 
     public void setData(Map<String, Integer> form) {
-        if (form != null) {
-            for (Map.Entry<String, Integer> entry : form.entrySet()) {
-                System.out.println(entry.getKey() + "/" + entry.getValue());
-            }
-        }else{
-            System.out.println("hahahah lol? didn't work");
+//        if (form != null) {
+//            for (Map.Entry<String, Integer> entry : form.entrySet()) {
+//                System.out.println(entry.getKey() + "/" + entry.getValue());
+//            }
+//        }else{
+//            System.out.println("hahahah lol? didn't work");
+//        }
+        Integer numOfCols = null;
+        Integer numOfRows = null;
+        try {
+            Integer[] presetData = problemKeeper.getPresetData();
+            numOfCols = presetData[presetData.length - 1];
+            numOfRows = presetData[0];
+        } catch (Exception e) {
+            e.printStackTrace();
+            numOfCols = 3;
+            numOfRows = 3;
         }
+
+        String[] inputData = form.values().toArray(new String[0]);
+
+        Integer[][] dataToSet = new Integer[numOfRows][numOfCols];
+
+        int counter = 0;
+
+        for (int i = 0; i < numOfRows; i++) {
+            for (int j = 0; j < numOfCols; j++) {
+                dataToSet[i][j] = Integer.parseInt(inputData[counter]);
+                System.out.println(dataToSet[i][j]);
+                counter++;
+            }
+        }
+
+        problemKeeper.setProblemData(dataToSet);
     }
 
-    public void setData(Integer[][] data) {
-        if (data != null) {
-            for (int i = 0; i < data.length; i++) {
-                System.out.println(data);
-            }
-        }else{
-            System.out.println("hahahah lol? didn't work");
-        }
-    }
 }

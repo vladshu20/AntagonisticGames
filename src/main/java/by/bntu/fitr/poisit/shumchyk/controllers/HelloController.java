@@ -17,6 +17,7 @@ public class HelloController {
 
     @GetMapping("/")
     public String mainPage(Model model) {
+        problemService.setPresetData(3,3);
         return "index";
     }
 
