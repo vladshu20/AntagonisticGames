@@ -43,4 +43,14 @@ public class ProblemService {
             System.out.println("hahahah lol? didn't work");
         }
     }
+
+    public void setData(Integer[][] data) {
+        if (data != null) {
+            for (int i = 0; i < data.length; i++) {
+                System.out.println(data);
+            }
+        }else{
+            System.out.println("hahahah lol? didn't work");
+        }
+    }
 }

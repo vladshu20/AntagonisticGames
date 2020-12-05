@@ -15,7 +15,7 @@ public class ProblemKeeper {
     }
 
     public Integer[] getPresetData(){
-        Problem pr = problemList.get(0);
+        Problem pr = problemList.get(problemList.size() - 1);
 
         Integer[] ar = {pr.getNumOfRows(),pr.getNumOfCols()};
 

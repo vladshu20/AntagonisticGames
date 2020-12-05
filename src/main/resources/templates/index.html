@@ -13,7 +13,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 </head>
-<body>
 
 
 <div th:replace="fragments/navigation :: nav"></div>
@@ -41,9 +40,10 @@
                 <table class="table table-bordered table-responsive-md table-striped text-center">
                     <tbody>
                     <tr th:each="i: ${#numbers.sequence(1,3)}">
-<!--                        <th:block th:each="i: ${#numbers.sequence(1,4)}">-->
+                        <!--                        <th:block th:each="i: ${#numbers.sequence(1,4)}">-->
                         <td class="pt-3-half" contenteditable="true" th:each="j: ${#numbers.sequence(1,3)}">
-                            <input type="text" class="form-control" th:name="${'data'+i+j}" th:id="${'data'+i+j}" value="0">
+                            <input type="text" class="form-control" th:name="${'data'+i+j}" th:id="${'data'+i+j}"
+                                   value="0">
                         </td>
                     </tr>
                     </tbody>
@@ -56,24 +56,20 @@
     </div>
 </form>
 
-
-    <div class="card" th:if="${numOfCols != null}">
+<form class="form" th:if="${numOfCols != null}" th:action="@{/alter}" method="post">
+    <div class="card">
         <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Editable table 1</h3>
         <div class="card-body">
             <div id="usr-table" class="table-editable">
       <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
               class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
                 <table class="table table-bordered table-responsive-md table-striped text-center">
-                    <!--                    <thead>-->
-                    <!--                    <tr>-->
 
-                    <!--                    </tr>-->
-                    <!--                    </thead>-->
                     <tbody>
                     <tr th:each="i: ${#numbers.sequence(1,numOfRows)}">
                         <!--                        <th:block th:each="i: ${#numbers.sequence(1,4)}">-->
-                        <td class="pt-3-half" contenteditable="true" th:each="i: ${#numbers.sequence(1,numOfCols)}">
-                            <input type="hidden">
+                        <td class="pt-3-half" contenteditable="true" th:each="j: ${#numbers.sequence(1,numOfCols)}">
+                            <input type="text" class="form-control" th:name="${'data'+i+j}" th:id="${'data'+i+j}">
                         </td>
                     </tr>
                     </tbody>
@@ -81,6 +77,10 @@
             </div>
         </div>
     </div>
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">start calculation</button>
+    </div>
+</form>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

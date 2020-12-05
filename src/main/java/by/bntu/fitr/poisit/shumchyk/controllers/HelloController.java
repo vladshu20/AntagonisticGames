@@ -27,6 +27,13 @@ public class HelloController {
         return "index";
     }
 
+    @PostMapping("/alter")
+    public String inputDataTableAlter(@RequestParam Map<String,Integer> form) {
+
+        problemService.setData(form);
+        return "index";
+    }
+
     @PostMapping("/preset")
     public String inputPreSetData(@RequestParam Integer numOfRows,
                                   @RequestParam Integer numOfCols,
