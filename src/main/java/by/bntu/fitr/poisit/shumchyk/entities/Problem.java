@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Problem {
     private  Integer numOfCols;
     private  Integer numOfRows;
-    private  Integer[] data;
+    private  Integer[][] data;
 
     public Integer getNumOfCols() {
         return numOfCols;
@@ -27,11 +27,11 @@ public class Problem {
         this.numOfRows = numOfRows;
     }
 
-    public Integer[] getData() {
+    public Integer[][] getData() {
         return data;
     }
 
-    public void setData(Integer[] data) {
+    public void setData(Integer[][] data) {
         this.data = data;
     }
 
@@ -64,7 +64,7 @@ public class Problem {
     public Problem() {
     }
 
-    public Problem(Integer numOfCols, Integer numOfRows, Integer[] data) {
+    public Problem(Integer numOfCols, Integer numOfRows, Integer[][] data) {
         this.numOfCols = numOfCols;
         this.numOfRows = numOfRows;
         this.data = data;
